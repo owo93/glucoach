@@ -29,7 +29,7 @@ async fn main() -> anyhow::Result<()> {
 
     dotenvy::dotenv().ok();
     let config = Config::try_from_env()?;
-    let Config { host, port } = config;
+    let Config { host, port, .. } = config;
 
     let app = Router::new()
         .route("/", get(|| async { "Hello, world!" }))
