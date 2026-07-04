@@ -55,6 +55,7 @@
               pkgs.cargo-edit
               pkgs.nodejs
               pkgs.pnpm_11
+              pkgs.supabase-cli
             ];
           };
         };
