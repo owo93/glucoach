@@ -24,6 +24,8 @@ async fn main() -> anyhow::Result<()> {
         )?)
         .try_init()?;
     tracing::info!("Starting glucoach_api v{}", env!("CARGO_PKG_VERSION"));
+    #[cfg(debug_assertions)]
+    tracing::warn!("Running on the DEBUG profile");
 
     dotenvy::dotenv().ok();
     let config = Config::try_from_env()?;
