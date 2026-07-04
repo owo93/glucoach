@@ -23,6 +23,7 @@
 
       imports = [
         ./glucoach-api/default.nix
+        ./glucoach-web/default.nix
       ];
 
       perSystem =
@@ -48,6 +49,7 @@
           devShells.default = pkgs.mkShell {
             inputsFrom = [
               config.packages.glucoach-api
+              config.packages.glucoach-web
             ];
             packages = [
               rustToolchain
