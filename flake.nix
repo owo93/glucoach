@@ -23,19 +23,34 @@
 
       imports = [
         ./glucoach-api/default.nix
-        ./glucoach-web/default.nix
       ];
 
       perSystem =
-        { config, pkgs, ... }:
         {
+          config,
+          pkgs,
+          system,
+          ...
+        }:
+        let
+          fenix = inputs.fenix.packages.${system};
+          rustToolchain = fenix.stable.withComponents [
+            "cargo"
+            "rustc"
+            "rust-src"
+            "rustfmt"
+            "clippy"
+          ];
+        in
+        {
+          _module.args = { inherit rustToolchain; };
+
           devShells.default = pkgs.mkShell {
             inputsFrom = [
               config.packages.glucoach-api
-              config.packages.glucoach-web
             ];
             packages = [
-              config._module.args.rustToolchain
+              rustToolchain
               pkgs.cargo-watch
               pkgs.cargo-edit
               pkgs.nodejs
