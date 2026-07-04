@@ -9,4 +9,5 @@
 )]
 
 pub mod config;
+pub mod schemas;
 pub mod state;

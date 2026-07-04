@@ -12,6 +12,9 @@ use tracing_subscriber::util::SubscriberInitExt;
 // - AppState
 // - add supabase JWKs to AppState
 
+mod extractors;
+mod routes;
+
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
     tracing_subscriber::registry()

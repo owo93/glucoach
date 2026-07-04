@@ -27,3 +27,4 @@ sqlx = { version = "0.9.0", features = [
 ] }
 uuid = { version = "1.23.4", features = ["serde", "v4"] }
 reqwest = { version = "0.13.4", features = ["http2", "rustls"] }
+thiserror = "2.0.18"
