@@ -26,5 +26,9 @@ sqlx = { version = "0.9.0", features = [
   "uuid",
 ] }
 uuid = { version = "1.23.4", features = ["serde", "v4"] }
-reqwest = { version = "0.13.4", features = ["http2", "rustls"] }
+reqwest = { version = "0.13.4", features = ["http2", "rustls", "json"] }
 thiserror = "2.0.18"
+jsonwebtoken = { version = "10.4.0", features = ["rust_crypto"] }
+arc-swap = "1.9.2"
+chrono = { version = "0.4.45", features = ["serde"] }
+axum-extra = { version = "0.12.6", features = ["typed-header"] }

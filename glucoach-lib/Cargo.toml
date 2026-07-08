@@ -7,3 +7,11 @@ edition.workspace = true
 [dependencies]
 anyhow.workspace = true
 thiserror.workspace = true
+reqwest.workspace = true
+arc-swap.workspace = true
+tracing.workspace = true
+jsonwebtoken.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+chrono.workspace = true
+uuid.workspace = true

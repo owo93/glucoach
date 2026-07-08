@@ -6,7 +6,7 @@ use anyhow::Context as _;
 pub struct Config {
     pub host: IpAddr,
     pub port: u16,
-    pub supabase_url: String,
+    pub supabase_ref: String,
 }
 
 impl Config {
@@ -21,12 +21,12 @@ impl Config {
             .parse()
             .expect("PORT must be a valid u16");
 
-        let supabase_url = var("SUPABASE_URL").context("SUPABASE_URL must be set")?;
+        let supabase_ref = var("SUPABASE_REF").context("SUPABASE_REF must be set")?;
 
         Ok(Self {
             host,
             port,
-            supabase_url,
+            supabase_ref,
         })
     }
 }

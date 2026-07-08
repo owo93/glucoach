@@ -8,12 +8,7 @@ use tower_http::trace::TraceLayer;
 use tracing_subscriber::layer::SubscriberExt;
 use tracing_subscriber::util::SubscriberInitExt;
 
-// TODO:
-// - AppState
-// - add supabase JWKs to AppState
-
 mod extractors;
-mod routes;
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
@@ -33,6 +28,8 @@ async fn main() -> anyhow::Result<()> {
     dotenvy::dotenv().ok();
     let config = Config::try_from_env()?;
     let Config { host, port, .. } = config;
+
+    glucoach_lib::jwks::fetch_from_supabase(&config.supabase_ref).await?;
 
     let app = Router::new()
         .route("/", get(|| async { "Hello, world!" }))
