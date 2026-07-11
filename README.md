@@ -1,6 +1,7 @@
 <div align="center">
   <h1>glucoach</h1>
   <p>the platform for nutritionists to manage every team, every athlete, and every meal plan.</p>
+  <img src="https://img.shields.io/badge/License-MIT-750014" alt="MIT License">
 </div>
 
 ## Overview
