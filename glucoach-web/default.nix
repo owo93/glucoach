@@ -2,28 +2,28 @@
   perSystem =
     { pkgs, self', ... }:
     let
-      pname = "glucoach-web";
-      version = "0.1.0";
-      nodejs = pkgs.nodejs;
-      pnpm = pkgs.pnpm_11;
+      packageJson = builtins.fromJSON (builtins.readFile ./package.json);
+      pname = packageJson.name;
+      version = packageJson.version;
+      buildInputs = with pkgs; [
+        nodejs
+        pnpm_11
+        pnpmConfigHook
+      ];
+      src = ../glucoach-web;
     in
     {
       packages.${pname} = pkgs.stdenv.mkDerivation {
-        inherit pname version;
-        src = ../glucoach-web;
+        inherit pname version src;
 
         pnpmDeps = pkgs.fetchPnpmDeps {
           pname = "${pname}-deps";
-          src = ../glucoach-web;
+          src = src;
           hash = "sha256-8ZPtxhGLL4KdThly/uXoY2i+eYTi+F9AMvk/QnmXJis=";
           fetcherVersion = 4;
         };
 
-        nativeBuildInputs = [
-          nodejs
-          pnpm
-          pkgs.pnpmConfigHook
-        ];
+        nativeBuildInputs = buildInputs;
 
         buildPhase = ''
           runHook preBuild
