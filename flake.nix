@@ -28,19 +28,18 @@
 
       perSystem =
         {
+          inputs',
           config,
           pkgs,
-          system,
           ...
         }:
         let
-          fenix = inputs.fenix.packages.${system};
-          rustToolchain = fenix.stable.withComponents [
+          rustToolchain = inputs'.fenix.packages.stable.withComponents [
             "cargo"
-            "rustc"
+            "clippy"
+            "rust-analyzer"
             "rust-src"
             "rustfmt"
-            "clippy"
           ];
         in
         {
