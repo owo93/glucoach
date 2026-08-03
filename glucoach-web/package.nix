@@ -57,6 +57,7 @@
             ${pkgs.nodejs}/bin/node server.js
           '';
         };
+        meta.description = "Glucoach web app";
       };
     };
 }

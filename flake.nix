@@ -22,8 +22,8 @@
       ];
 
       imports = [
-        ./glucoach-api/default.nix
-        ./glucoach-web/default.nix
+        ./glucoach-api/package.nix
+        ./glucoach-web/package.nix
       ];
 
       perSystem =
